@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./practical
+        working-directory: practical
     steps:
         - name : Checkout
           uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
       runs-on: ubuntu-latest
       defaults:
         run:
-          working-directory: ./practical
+          working-directory: practical
       steps:
       - name: Contenxt info
         run: |
