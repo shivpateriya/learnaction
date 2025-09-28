@@ -3,10 +3,10 @@ on:
   push:
       paths:
         - 2-action/**
-        branches:
+      branches:
           - main 
 
-jonbs:
+jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
