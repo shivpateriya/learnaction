@@ -1,0 +1,40 @@
+name: practical 
+on: workflow_dispatch
+jobs: 
+  pracitcal_job:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./practical
+    steps:
+        - name : Checkout
+          uses: actions/checkout@v3
+        - name : setup 
+          run : npm ci 
+        - name : Lint
+          run : npm run lint
+        - name: Test cide 
+          run : npm test
+        - name : build 
+          run : npm run build
+  context_info:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./practical
+      steps:
+      - name: Contenxt info
+        run: |
+          echo "The event that triggered the workflow is ${{ github.event_name }}"
+          echo "The branch that triggered the workflow is ${{ github.ref }}"
+          echo "The commit SHA that triggered the workflow is ${{ github.sha }}"
+          echo "The actor that triggered the workflow is ${{ github.actor }}"
+          echo "The workflow name is ${{ github.workflow }}"
+          echo "The job name is ${{ github.job }}"
+          echo "The run number is ${{ github.run_number }}"
+          echo "The run ID is ${{ github.run_id }}"
+          echo "The repository name is ${{ github.repository }}"
+          echo "The repository owner is ${{ github.repository_owner }}"
+          echo "The base ref is ${{ github.base_ref || 'N/A' }}"
+          echo "The head ref is ${{ github.head_ref || 'N/A' }}"
+
