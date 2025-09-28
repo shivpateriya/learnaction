@@ -1,12 +1,16 @@
-name: Build and Test
-on:   
-  push:
-      paths:
-        - 2-action/**
-        branches:
-          - main 
+name: Vite React CI
 
-jonbs:
+on:
+  push:
+    paths:
+      - '2-action/**'
+    branches: [ "main" ]
+  pull_request:
+    paths:
+      - '2-action/**'
+    branches: [ "main" ]
+
+jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -29,7 +33,7 @@ jonbs:
 
       - name: Build
         run: npm run build
-  test:
+
       - name: Run tests
         run: npm test
 
@@ -37,3 +41,4 @@ jonbs:
         uses: actions/upload-artifact@v3
         with:
           name: dist
+          path: 2-action/dist
