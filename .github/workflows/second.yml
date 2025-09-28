@@ -29,7 +29,6 @@ jobs:
 
       - name: Build
         run: npm run build
-  test:
       - name: Run tests
         run: npm test
 
