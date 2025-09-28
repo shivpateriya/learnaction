@@ -19,9 +19,6 @@ jobs:
           run : npm run build
   context_info:
       runs-on: ubuntu-latest
-      defaults:
-        run:
-          working-directory: practical_4
       steps:
       - name: Contenxt info
         run: |
