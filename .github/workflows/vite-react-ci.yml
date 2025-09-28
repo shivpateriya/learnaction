@@ -1,44 +1,21 @@
-name: Vite React CI
+name: Build and Run 2-action
 
 on:
-  workflow_dispatch:
-   - paths:
+  push:
+    paths:
       - '2-action/**'
-   - branches: [ "main" ]
+    branches: [ "main" ]
   pull_request:
     paths:
       - '2-action/**'
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./2-action
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: './2-action/package.json'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Run tests
-        run: npm test
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: 2-action/dist
